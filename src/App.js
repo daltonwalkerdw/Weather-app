@@ -30,21 +30,21 @@ function App() {
   }
 
   const fetchWeather = async () => {
-    
-      try {
-        await window.navigator.geolocation.getCurrentPosition(savePosition, error, options)
-        if(lat && lon) {
-          const res = await axios.get(
+
+    try {
+      await window.navigator.geolocation.getCurrentPosition(savePosition, error, options)
+      if (lat && lon) {
+        const res = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`
-          );
-          setData(res.data)
-        }
-        
-      } catch (err) {
-        console.log(err)
+        );
+        setData(res.data)
       }
 
-    
+    } catch (err) {
+      console.log(err)
+    }
+
+
   }
 
   useEffect(() => {
@@ -58,11 +58,12 @@ function App() {
         <Header />
         <Switch>
           <Route path="/fiveDayForecast">
-            <FiveDayForecast lat={lat} lon={lon} weatherData={data} apiKey={apiKey} />
+            <FiveDayForecast
+             lat={lat} lon={lon} apiKey={apiKey}
+              />
           </Route>
           <Route path="/">
             {data && <TodaysWeather lat={lat} lon={lon} apiKey={apiKey} weatherData={data} />}
-            
           </Route>
         </Switch>
       </div>

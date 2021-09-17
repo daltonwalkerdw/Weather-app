@@ -20,13 +20,16 @@ const FiveDayForecast = ({ apiKey, lat, lon }) => {
 
     useEffect(() => {
         fetchWeather()
-        // console.log("foreacst", forecast)
+        console.log("foreacst", forecast)
+        
     }, [lat, lon])
     return (
         <div>
-            <p>hello</p>
             {forecast.list?.map((data, id) => {
-                return <ForecastCards key={id} date={data.dt_txt.split(" ")[0]} time={data.dt_txt.split(" ")[1]} temp={data.main.temp} />
+                console.log(data.weather[0].icon)
+                return <ForecastCards
+                    key={id} date={data.dt_txt.split(" ")[0]} time={data.dt_txt.split(" ")[1]} temp={data.main.temp} icon={data.weather[0].icon}
+                />
             })}
         </div>
     )

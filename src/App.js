@@ -13,6 +13,7 @@ function App() {
   const [data, setData] = useState("")
   const apiKey = '47b7cf20f1c288e543207418319d1fb7'
 
+  // Fetches latitude and longitude to get your current location.
   const savePosition = (position) => {
     setLat(position.coords.latitude)
     setLong(position.coords.longitude)
@@ -22,6 +23,8 @@ function App() {
 
     try {
       await window.navigator.geolocation.getCurrentPosition(savePosition)
+      // Waits for lat and lon to be assigned to state before moving on to prevent
+      // a false .GET request
       if (lat && lon) {
         const res = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`

@@ -36,3 +36,39 @@
     transform: rotate(360deg);
   }
 }
+.header{
+  display: flex;
+  justify-content: center;
+  gap: 8rem;
+}
+
+.today{
+  height: 15rem;
+  width: 11rem;
+  border: 10px solid white;
+  border-radius: 6px;
+  padding: 5rem 5rem 5rem 5rem;
+  margin: 8rem auto;
+
+}
+.forecast{
+  display: flex;
+ justify-content: center;
+
+}
+.forecastCard{
+  height: 12rem;
+  width: 24rem;
+  border: 4px solid white;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem auto;
+}
+.td{
+  display: flex;
+  justify-content: space-between;
+  width: 24rem;
+}
+p{
+  font-size: 1.8rem;
+}
